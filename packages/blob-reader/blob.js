@@ -21,6 +21,19 @@ export default class Blob {
     this.path = path;
     this.lines = lines;
     this.branch = branch;
+
+    // if (this.lines.length > 10000) {
+    //   this.lines = this.lines.slice(0, 500);
+    // }
+
+    // TODO fetch only dep which are visible https://github.com/OctoLinker/OctoLinker/commit/b97dfbfdbf3dee5f4836426e6dac6d6f473461db?diff=split#diff-b9cfc7f2cdf78a7f4b91a753d10865a2R24
+    // this.visibleFirstLineNumber = this.lines.length
+    //   ? this.lines[0].lineNumber
+    //   : 0;
+    // this.visibleLastLineNumber = this.lines.length
+    //   ? this.lines[this.lines.length - 1].lineNumber
+    //   : 0;
+
     this.blobType = blobType; // one of: diffLeft, diffRight, snippet, full
   }
 
