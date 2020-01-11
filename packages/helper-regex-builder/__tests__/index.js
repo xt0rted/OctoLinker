@@ -4,7 +4,7 @@ describe('helper-regex-builder', () => {
   it('jsonRegExValue', () => {
     expect(jsonRegExValue('foo', 'bar')).toEqual(/"foo"\s*:\s*("bar")/);
     expect(jsonRegExValue('foo', 'bar', false)).toEqual(/"foo"\s*:\s*("bar")/);
-    expect(jsonRegExValue('foo', 'bar', true)).toEqual(/"foo"\s*:\s*("bar")/g);
+    expect(jsonRegExValue('foo', 'bar', true)).toEqual(/"foo"\s*:\s*("bar")/);
   });
 
   it('jsonRegExKeyValue', () => {
@@ -13,7 +13,7 @@ describe('helper-regex-builder', () => {
       /("foo")\s*:\s*("bar")/,
     );
     expect(jsonRegExKeyValue('foo', 'bar', true)).toEqual(
-      /("foo")\s*:\s*("bar")/g,
+      /("foo")\s*:\s*("bar")/,
     );
   });
 });

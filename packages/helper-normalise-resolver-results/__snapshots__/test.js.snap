@@ -1,6 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`normaliseResolverResults converts [
+  '{BASE_URL}/foo/bar/blob/master/file.js',
+  '{BASE_URL}/foo/bar/blob/master/file.js'
+] 1`] = `
+Array [
+  Object {
+    "branch": "master",
+    "path": "file.js",
+    "repo": "bar",
+    "type": "internal-link",
+    "url": "https://github.com/foo/bar/blob/master/file.js",
+    "user": "foo",
+  },
+  Object {
+    "branch": "master",
+    "path": "file.js",
+    "repo": "bar",
+    "type": "internal-link",
+    "url": "https://github.com/foo/bar/blob/master/file.js",
+    "user": "foo",
+  },
+]
+`;
+
+exports[`normaliseResolverResults converts [ '{BASE_URL}/foo/bar/blob/master/file.js' ] 1`] = `
+Array [
+  Object {
+    "branch": "master",
+    "path": "file.js",
+    "repo": "bar",
+    "type": "internal-link",
+    "url": "https://github.com/foo/bar/blob/master/file.js",
+    "user": "foo",
+  },
+]
+`;
+
 exports[`normaliseResolverResults converts [object Object] 1`] = `
+Array [
+  Object {
+    "registry": "npm",
+    "target": "foo",
+    "type": "registry",
+  },
+]
+`;
+
+exports[`normaliseResolverResults converts { registry: 'npm', target: 'foo' } 1`] = `
 Array [
   Object {
     "registry": "npm",
