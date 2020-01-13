@@ -28,15 +28,13 @@ export default function(blobString, regex) {
       matchValue,
     );
 
-    let offset = 0;
     let matchValueStriped = matchValue;
     if (matchValue.length !== matchValue.replace(/['|"]/g, '').length) {
-      offset = 1;
       matchValueStriped = matchValueStriped.replace(/['|"]/g, '');
     }
 
-    const startPos = lines[lineNumber - 1].indexOf(match[1]) + offset;
-    const endPos = startPos + matchValueStriped.length;
+    const startPos = lines[lineNumber - 1].indexOf(matchValue);
+    const endPos = startPos + matchValue.length;
 
     return {
       lineNumber,

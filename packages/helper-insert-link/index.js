@@ -15,12 +15,18 @@ function createLinkElement() {
   return linkEl;
 }
 
-function injectUrl(node, startOffset, endOffset) {
+function injectUrl(node, value, startOffset, endOffset) {
   let el;
   try {
+    const textMatch = node.textContent.slice(startOffset, endOffset);
+
     findAndReplaceDOMText(node, {
-      find: node.textContent.slice(startOffset, endOffset),
+      find: textMatch,
       replace: portion => {
+        if (!portion.text.includes(value)) {
+          return portion.text;
+        }
+
         el = createLinkElement();
         el.textContent = portion.text;
 
@@ -105,7 +111,7 @@ export default function(blob, regex, plugin, meta = {}) {
       }
 
       // TODO push link el into matches along with the urls prop
-      const retEl = injectUrl(el, startPos, endPos);
+      const retEl = injectUrl(el, values[0], startPos, endPos);
       if (retEl) {
         matches.push({
           link: retEl,
