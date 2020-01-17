@@ -41,7 +41,7 @@ function singleImportRegExpBuilder(input) {
 
     const val = escapeRegexString(value);
     return new RegExp(
-      `import\\s(?:[_\\.]\\s|[\\w]+\\s)?(['"]${val}['"]?)`,
+      `import\\s(?:[_\\.]\\s|[\\w]+\\s)?['"](${val})['"]?`,
       'gm',
     );
   });

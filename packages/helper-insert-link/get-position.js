@@ -38,7 +38,8 @@ export default function(blobString, regex) {
         matchValueStriped = matchValueStriped.replace(/['|"]/g, '');
       }
 
-      const startPos = lines[lineNumber - 1].indexOf(matchValue);
+      const line = lines[lineNumber - 1];
+      const startPos = line.lastIndexOf(matchValue);
       const endPos = startPos + matchValue.length;
 
       return {

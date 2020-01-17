@@ -3,11 +3,15 @@ import regex from './regex';
 export { default as go } from './go.js';
 
 const captureQuotedWord = regex`
-  (?<$1>['"][^'"\s]+['"])
+  ['"]              # beginning quote
+  (?<$1>[^'"\s]+)   # capture the word inside the quotes
+  ['"]              # end quote
 `;
 
 const captureJsQuotedWord = regex`
-  (?<$1>['"][^'"\`\s]+['"])
+  ['"\`]            # beginning quote
+  (?<$1>[^'"\`\s]+) # capture the word inside the quotes
+  ['"\`]            # end quote
 `;
 
 const diffSigns = regex`
