@@ -17,30 +17,36 @@ function getLineFromPos(str, pos, matchPartial, matchValue) {
 export default function(blobString, regex) {
   const lines = blobString.split('\n');
 
-  return [...blobString.matchAll(regex)].map(match => {
-    const matchPartial = match[0];
-    const matchValue = match[1];
+  return [...blobString.matchAll(regex)]
+    .map(match => {
+      const matchPartial = match[0];
+      const matchValue = match[1];
 
-    const lineNumber = getLineFromPos(
-      blobString,
-      match.index,
-      matchPartial,
-      matchValue,
-    );
+      if (!matchValue) {
+        return undefined;
+      }
 
-    let matchValueStriped = matchValue;
-    if (matchValue.length !== matchValue.replace(/['|"]/g, '').length) {
-      matchValueStriped = matchValueStriped.replace(/['|"]/g, '');
-    }
+      const lineNumber = getLineFromPos(
+        blobString,
+        match.index,
+        matchPartial,
+        matchValue,
+      );
 
-    const startPos = lines[lineNumber - 1].indexOf(matchValue);
-    const endPos = startPos + matchValue.length;
+      let matchValueStriped = matchValue;
+      if (matchValue.length !== matchValue.replace(/['|"]/g, '').length) {
+        matchValueStriped = matchValueStriped.replace(/['|"]/g, '');
+      }
 
-    return {
-      lineNumber,
-      startPos,
-      endPos,
-      values: [matchValueStriped],
-    };
-  });
+      const startPos = lines[lineNumber - 1].indexOf(matchValue);
+      const endPos = startPos + matchValue.length;
+
+      return {
+        lineNumber,
+        startPos,
+        endPos,
+        values: [matchValueStriped],
+      };
+    })
+    .filter(Boolean);
 }
