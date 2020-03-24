@@ -62,4 +62,8 @@
     <Content Include="../foo bar/test file.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <!-- @OctoLinkerResolve(<root>/dotnet/dotnet-tools.json)-->
+    <AdditionalFiles Include="../dotnet-tools.json" />
+  </ItemGroup>
 </Project>

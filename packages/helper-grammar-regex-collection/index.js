@@ -2,9 +2,13 @@ import regex from './regex';
 
 export { default as go } from './go.js';
 
+const captureXmlNodeWord = regex`
+  (?<$1>[^<>]+) # capture the word inside the node
+`;
+
 const captureQuotedWord = regex`
   ['"]              # beginning quote
-  (?<$1>[^'"\s]+)   # capture the word inside the quotes
+  (?<$1>[^'"]+)   # capture the word inside the quotes
   ['"]              # end quote
 `;
 
@@ -223,9 +227,15 @@ export const NET_PROJ_SDK = regex`
 `;
 
 export const NET_PROJ_FILE_REFERENCE = regex`
-  <(Compile|Content|EmbeddedResource|None|ProjectReference)
+  <(AdditionalFiles|Compile|Content|EmbeddedResource|EntityDeploy|Fakes|None|ProjectReference|Shadow)
   \s+
   .*
   (Include|Update)=${captureSpacedQuotedWord}
   .*/?>
+`;
+
+export const NET_PROJ_FILE = regex`
+  <CodeAnalysisRuleSet>
+  ${captureXmlNodeWord}
+  </CodeAnalysisRuleSet>
 `;
