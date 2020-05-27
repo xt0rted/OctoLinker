@@ -1,30 +1,34 @@
 import {
+  NET_NUSPEC_DEPENDENCY,
   NET_PACKAGE,
   NET_PROJ_PACKAGE,
   NET_PROJ_SDK,
 } from '@octolinker/helper-grammar-regex-collection';
-import nugetResolver from '@octolinker/resolver-nuget';
+import liveResolverQuery from '@octolinker/resolver-live-query';
 
 export default {
   name: 'DotNet',
 
   resolve(path, [target]) {
-    return nugetResolver({ target });
+    return liveResolverQuery({ type: 'nuget', target });
   },
 
   getPattern() {
     return {
       pathRegexes: [
         /packages\.config$/,
-        /\.(cs|fs|vb)proj$/,
+        /\.(cc|cs|fs|vb)proj$/,
         /\.props$/,
         /\.targets$/,
+        /\.nuspec$/,
       ],
       githubClasses: [],
     };
   },
 
   getLinkRegexes() {
-    return [NET_PACKAGE, NET_PROJ_PACKAGE, NET_PROJ_SDK];
+    return [NET_NUSPEC_DEPENDENCY, NET_PACKAGE, NET_PROJ_PACKAGE, NET_PROJ_SDK];
   },
 };
+
+// https://github.com/nunit/nunit/blob/master/nuget/framework/nunit.nuspec#L31

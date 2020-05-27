@@ -222,10 +222,25 @@ export const NET_PROJ_SDK = regex`
   .*>
 `;
 
+// ApplicationDefinition: https://github.com/microsoft/PowerToys/blob/master/src/modules/launcher/Wox/Wox.csproj
+// AppxManifest: https://github.com/microsoft/PowerToys/blob/master/src/modules/launcher/PowerLauncher.UI/PowerLauncher.UI.csproj#L61
 export const NET_PROJ_FILE_REFERENCE = regex`
-  <(Compile|Content|EmbeddedResource|None|ProjectReference)
+  <(AppxManifest|ApplicationDefinition|Compile|Content|DiagnosticsConfiguration|EmbeddedResource|None|Page|ProjectReference|ServiceConfiguration|ServiceDefinition)
   \s+
   .*
-  (Include|Update)=${captureSpacedQuotedWord}
-  .*/?>
+  (Include|Update|Remove)=${captureSpacedQuotedWord}
+`;
+
+export const NET_NUSPEC_DEPENDENCY = regex`
+  <dependency
+  \s+
+  .*
+  id=${captureQuotedWord}
+`;
+
+export const NET_NUSPEC_FILE_REFERENCE = regex`
+  <(file|repository)
+  \s+
+  .*
+  (path|src)=${captureSpacedQuotedWord}
 `;

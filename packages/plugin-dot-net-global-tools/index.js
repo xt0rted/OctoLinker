@@ -1,7 +1,7 @@
 import insertLink from '@octolinker/helper-insert-link';
 import processJSON from '@octolinker/helper-process-json';
 import { jsonRegExKeyValue } from '@octolinker/helper-regex-builder';
-import nugetResolver from '@octolinker/resolver-nuget';
+import liveResolverQuery from '@octolinker/resolver-live-query';
 
 function linkDependency(blob, key, value) {
   const regex = jsonRegExKeyValue(key, value, true);
@@ -13,7 +13,7 @@ export default {
   needsContext: true,
 
   resolve(path, [target]) {
-    return nugetResolver({ target });
+    return liveResolverQuery({ type: 'nuget', target });
   },
 
   getPattern() {
