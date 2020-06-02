@@ -1,0 +1,19 @@
+{
+  "name": "octolinker-api",
+  "version": 2,
+  "builds": [
+    {
+      "//": "@OctoLinkerResolve(<root>/src/handler.js)",
+      "src": "src/handler.js",
+      "//": "@OctoLinkerResolve(https://github.com/zeit/now/tree/master/packages/now-node)",
+      "use": "@now/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/?",
+      "//": "@OctoLinkerResolve(<root>/src/handler.js)",
+      "dest": "src/handler.js"
+    }
+  ]
+}

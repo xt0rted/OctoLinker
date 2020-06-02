@@ -1,0 +1,45 @@
+{
+  "presets": [
+    // @OctoLinkerResolve(https://github.com/babel/babel/tree/master/packages/babel-preset-env)
+    "@babel/preset-env"
+  ],
+  "plugins": [
+    [
+      // @OctoLinkerResolve(https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-class-properties)
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": false
+      }
+    ]
+  ],
+  "env": {
+    "reaction-node": {
+      "presets": [
+        [
+          // @OctoLinkerResolve(https://github.com/babel/babel/tree/master/packages/babel-preset-react)
+          "@babel/preset-react",
+          {
+            "targets": {
+              "node": "current"
+            }
+          }
+        ],
+        [
+          // @OctoLinkerResolve(https://github.com/babel/babel/tree/master/packages/babel-preset-react)
+          "@babel/preset-react"
+        ]
+      ],
+      "plugins": [
+        // @OctoLinkerResolve(https://github.com/Quadric/babel-plugin-inline-import)
+        "babel-plugin-inline-import",
+        [
+          // @OctoLinkerResolve(https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-decorators)
+          "@babel/plugin-proposal-decorators",
+          {
+            "legacy": true
+          }
+        ]
+      ]
+    }
+  }
+}

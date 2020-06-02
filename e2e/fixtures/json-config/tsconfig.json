@@ -1,0 +1,4 @@
+{
+  "//": "@OctoLinkerResolve(https://github.com/sindresorhus/tsconfig)",
+  "extends": "@sindresorhus/tsconfig"
+}

@@ -1,0 +1,10 @@
+{
+  "//": "@OctoLinkerResolve(https://github.com/kriasoft/react-app)",
+  "extends": "react-app",
+
+  "//": "@OctoLinkerResolve(<root>/src/handler.js)",
+  "extends": "./src/handler.js",
+
+  "//": "@OctoLinkerResolve(https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/parser)",
+  "parser": "@typescript-eslint/parser"
+}

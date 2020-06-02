@@ -1,0 +1,53 @@
+{
+  "babel": {
+    "plugins": [
+      [
+        // @OctoLinkerResolve(https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-class-properties)
+        "@babel/plugin-proposal-class-properties",
+        {
+          "loose": false
+        }
+      ]
+    ],
+    "env": {
+      "reaction-node": {
+        "plugins": [
+          // @OctoLinkerResolve(https://github.com/Quadric/babel-plugin-inline-import)
+          "babel-plugin-inline-import",
+          [
+            // @OctoLinkerResolve(https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-decorators)
+            "@babel/plugin-proposal-decorators",
+            {
+              "legacy": true
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "eslintConfig": {
+    "//": "@OctoLinkerResolve(https://github.com/kriasoft/react-app)",
+    "extends": "react-app",
+
+    "//": "@OctoLinkerResolve(<root>/src/handler.js)",
+    "extends": "./src/handler.js",
+
+    "//": "@OctoLinkerResolve(https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/parser)",
+    "parser": "@typescript-eslint/parser"
+  },
+  "stylelint": {
+    "//": "@OctoLinkerResolve(https://www.npmjs.com/package/@netsells/stylelint-config)",
+    "extends": "@netsells/stylelint-config",
+
+    "//": "@OctoLinkerResolve(<root>/src/handler.js)",
+    "extends": "./src/handler.js"
+
+  },
+  "stylelintConfig": {
+    "//": "@OctoLinkerResolve(https://www.npmjs.com/package/@netsells/stylelint-config)",
+    "extends": "@netsells/stylelint-config",
+
+    "//": "@OctoLinkerResolve(<root>/src/handler.js)",
+    "extends": "./src/handler.js"
+  }
+}
