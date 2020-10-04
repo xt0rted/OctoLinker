@@ -1,0 +1,12 @@
+{
+  "name": "@octolinker/helper-process-yaml",
+  "version": "1.0.0",
+  "description": "",
+  "repository": "https://github.com/octolinker/octolinker/tree/main/packages/helper-process-yaml",
+  "license": "MIT",
+  "main": "./index.js",
+  "dependencies": {
+    "JSONPath": "^0.11.2",
+    "yaml": "^1.10.0"
+  }
+}

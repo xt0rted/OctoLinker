@@ -1,0 +1,4 @@
+override_dependencies:
+  collection:
+    # @OctoLinkerResolve(<root>/dart)
+    path: ../../dart

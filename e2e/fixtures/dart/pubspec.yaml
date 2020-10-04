@@ -1,0 +1,6 @@
+dependencies:
+  # @OctoLinkerResolve(https://pub.dev/packages/yaml)
+  yaml: "^2.1.12"
+dev_dependencies:
+  # @OctoLinkerResolve(https://pub.dev/packages/yaml)
+  yaml: any

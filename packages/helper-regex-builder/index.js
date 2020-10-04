@@ -29,3 +29,17 @@ export function tomlRegExKeyValue(key, value) {
 
   return new RegExp(`(${regexKey})\\s*=\\s*"(${regexValue})"`, 'g');
 }
+
+export function yamlRegExKeyValue(key, value) {
+  const regexKey = escapeRegexString(key);
+  const regexValue = escapeRegexString(value);
+
+  return new RegExp(`(${regexKey})\\s*:\\s*['"]?(${regexValue})['"]?`, 'g');
+}
+
+export function yamlRegExValue(key, value) {
+  const regexKey = escapeRegexString(key);
+  const regexValue = escapeRegexString(value);
+
+  return new RegExp(`${regexKey}\\s*:\\s*['"]?(${regexValue})['"]?`, 'g');
+}

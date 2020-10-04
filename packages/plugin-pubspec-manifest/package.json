@@ -1,0 +1,16 @@
+{
+  "name": "@octolinker/plugin-pubspec-manifest",
+  "version": "1.0.0",
+  "description": "",
+  "repository": "https://github.com/octolinker/octolinker/tree/main/packages/plugin-pubspec-manifest",
+  "license": "MIT",
+  "main": "./index.js",
+  "dependencies": {
+    "@octolinker/helper-insert-link": "1.0.0",
+    "@octolinker/helper-process-yaml": "1.0.0",
+    "@octolinker/helper-regex-builder": "1.0.0",
+    "@octolinker/plugin-dart": "1.0.0",
+    "@octolinker/resolver-live-query": "1.0.0",
+    "yaml": "^1.10.0"
+  }
+}
