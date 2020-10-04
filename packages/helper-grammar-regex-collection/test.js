@@ -572,6 +572,24 @@ const fixtures = {
     ],
     invalid: [],
   },
+  DART: {
+    valid: [
+      ["export 'foo'", ['foo']],
+      ["export 'foo';", ['foo']],
+      ["import 'foo'", ['foo']],
+      ["import 'foo';", ['foo']],
+      ["part 'foo'", ['foo']],
+      ["part 'foo';", ['foo']],
+    ],
+    invalid: ['foo', "foo 'bar'"],
+  },
+  DART_CONDITIONAL: {
+    valid: [
+      ["if (baz) 'foo'", ['foo']],
+      ["if (baz) 'foo';", ['foo']],
+    ],
+    invalid: ['foo'],
+  },
 };
 
 function fixturesIterator(fixturesList, next) {

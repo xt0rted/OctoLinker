@@ -268,3 +268,17 @@ export const NET_PROJ_FILE_REFERENCE = regex`
   (Include|Update)=${captureSpacedQuotedWord}
   .*/?>
 `;
+
+export const DART = regex`
+  (export|import|part)
+  \s*
+  ${captureSpacedQuotedWord}
+`;
+
+export const DART_CONDITIONAL = regex`
+  if
+  \s*
+  \(.*\)
+  \s*
+  ${captureSpacedQuotedWord}
+`;

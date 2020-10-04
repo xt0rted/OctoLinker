@@ -1,6 +1,7 @@
 export { default as BowerManifest } from '@octolinker/plugin-bower-manifest';
 export { default as Composer } from '@octolinker/plugin-composer-manifest';
 export { default as CSS } from '@octolinker/plugin-css';
+export { default as Dart } from '@octolinker/plugin-dart';
 export { default as Docker } from '@octolinker/plugin-docker';
 export { default as DotNetCore } from '@octolinker/plugin-dotnet-core';
 export { default as DotNet } from '@octolinker/plugin-dotnet';
