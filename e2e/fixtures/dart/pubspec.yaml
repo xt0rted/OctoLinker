@@ -1,6 +1,26 @@
+# @OctoLinkerDoesNotResolve
+flutter:
+
 dependencies:
-  # @OctoLinkerResolve(https://pub.dev/packages/yaml)
+  # @OctoLinkerResolve(https://flutter.io)
+  flutter:
+    sdk: flutter
+
+  # @OctoLinkerResolve(https://github.com/dart-lang/yaml)
   yaml: "^2.1.12"
+
+  foo:
+    # @OctoLinkerResolve(https://github.com/OctoLinker/OctoLinker/tree/main/dart/relative)
+    path: relative
+
+  foo:
+    # @OctoLinkerResolve(https://github.com/OctoLinker/OctoLinker/tree/main/dart/relative)
+    path: "relative"
+
+  foo:
+    # @OctoLinkerDoesNotResolve
+    path: ../relative
+
 dev_dependencies:
-  # @OctoLinkerResolve(https://pub.dev/packages/yaml)
+  # @OctoLinkerResolve(https://github.com/dart-lang/yaml)
   yaml: any

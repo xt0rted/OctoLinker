@@ -1,6 +1,7 @@
 import insertLink from '@octolinker/helper-insert-link';
 import processYAML from '@octolinker/helper-process-yaml';
 import {
+  yamlRegExKey,
   yamlRegExKeyValue,
   yamlRegExValue,
 } from '@octolinker/helper-regex-builder';
@@ -8,13 +9,45 @@ import { dartFolder } from '@octolinker/plugin-dart';
 import liveResolverQuery from '@octolinker/resolver-live-query';
 
 function linkDependency(blob, key, value) {
-  if (typeof value === 'string') {
-    const regex = yamlRegExKeyValue(key, value);
-    return insertLink(blob, regex, this, { type: 'pub' });
+  // The sdk dependency isn't a package and can't be linked to
+  if (key === 'sdk') {
+    return;
   }
 
-  const regex = yamlRegExValue('path', value.path);
-  return insertLink(blob, regex, this, { type: 'folder' });
+  if (value) {
+    // https://dart.dev/tools/pub/dependencies#version-constraints
+    if (typeof value === 'string') {
+      const regex = yamlRegExKeyValue(key, value);
+      return insertLink(blob, regex, this, { type: 'pub' });
+    }
+
+    // https://dart.dev/tools/pub/dependencies#sdk
+    if (value.sdk) {
+      // Packages loaded from the local sdk
+      return;
+    }
+
+    // https://dart.dev/tools/pub/dependencies#hosted-packages
+    if (value.hosted) {
+      // Packages hosted on 3rd party package servers
+      return;
+    }
+
+    // https://dart.dev/tools/pub/dependencies#git-packages
+    if (value.git) {
+      // TODO: build this out
+      return;
+    }
+
+    // https://dart.dev/tools/pub/dependencies#path-packages
+    if (value.path) {
+      const regex = yamlRegExValue('path', value.path);
+      return insertLink(blob, regex, this, { type: 'folder' });
+    }
+  }
+
+  const regex = yamlRegExKey(key, false);
+  return insertLink(blob, regex, this, { type: 'pub' });
 }
 
 export default {
@@ -28,7 +61,8 @@ export default {
     }
 
     if (type === 'folder') {
-      return dartFolder({ path, target: values[0] });
+      const url = dartFolder({ path, target: values[0] });
+      return url;
     }
   },
 

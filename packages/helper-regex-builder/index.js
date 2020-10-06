@@ -15,6 +15,16 @@ function regexBuilder(key, value, groupKey, global) {
   );
 }
 
+function yamlRegexBuilder(key, value, groupKey) {
+  const regexKey = escapeRegexString(key);
+  const keyField = groupKey ? `(${regexKey})` : `${regexKey}`;
+
+  const regexValue = escapeRegexString(value);
+  const valueField = `['"]?(${regexValue})['"]?`;
+
+  return new RegExp(`${keyField}\\s*:\\s*${valueField}`, 'g');
+}
+
 export function jsonRegExKeyValue(key, value, global = true) {
   return regexBuilder(key, value, true, global);
 }
@@ -30,16 +40,22 @@ export function tomlRegExKeyValue(key, value) {
   return new RegExp(`(${regexKey})\\s*=\\s*"(${regexValue})"`, 'g');
 }
 
-export function yamlRegExKeyValue(key, value) {
+export function yamlRegExKey(key, rootLevel) {
   const regexKey = escapeRegexString(key);
-  const regexValue = escapeRegexString(value);
 
-  return new RegExp(`(${regexKey})\\s*:\\s*['"]?(${regexValue})['"]?`, 'g');
+  let level = '';
+  if (typeof rootLevel !== 'undefined') {
+    level = rootLevel ? '^' : '[\\t\\f\\v ]+';
+  }
+
+  // Multiline lets us use ^ to match the start of the line instead of the string
+  return new RegExp(`${level}(${regexKey})\\s*:`, 'gm');
+}
+
+export function yamlRegExKeyValue(key, value) {
+  return yamlRegexBuilder(key, value, true);
 }
 
 export function yamlRegExValue(key, value) {
-  const regexKey = escapeRegexString(key);
-  const regexValue = escapeRegexString(value);
-
-  return new RegExp(`${regexKey}\\s*:\\s*['"]?(${regexValue})['"]?`, 'g');
+  return yamlRegexBuilder(key, value, false);
 }
