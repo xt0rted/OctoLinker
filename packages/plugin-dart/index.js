@@ -5,9 +5,6 @@ import {
 
 import liveResolverQuery from '@octolinker/resolver-live-query';
 import resolverRelativeFile from '@octolinker/resolver-relative-file';
-import resolverTrustedUrl from '@octolinker/resolver-trusted-url';
-
-import builtinsDocs from './builtins-docs.js';
 
 export function dartFile({ path, target }) {
   return resolverRelativeFile({ path, target });
@@ -21,6 +18,16 @@ export function dartFolder({ path, target }) {
   return `{BASE_URL}/${user}/${repo}/tree/${fullPath}`;
 }
 
+function getBuiltIn(target) {
+  const [, name] = target.split(':');
+  const library = target.replace(':', '-');
+
+  return [
+    `https://github.com/dart-lang/sdk/tree/master/sdk/lib/${name}`,
+    `https://api.dart.dev/stable/${library}/${library}-library.html`,
+  ];
+}
+
 function getPackage(target) {
   const packageMatcher = new RegExp(`package:(.*)\/.*`);
   const result = packageMatcher.exec(target);
@@ -32,9 +39,9 @@ export default {
   name: 'Dart',
 
   resolve(path, [target]) {
-    const isBuiltIn = target in builtinsDocs;
+    const isBuiltIn = target.startsWith('dart:');
     if (isBuiltIn) {
-      return resolverTrustedUrl({ target: builtinsDocs[target] });
+      return getBuiltIn(target);
     }
 
     const isPackage = target.startsWith('package:');

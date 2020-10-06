@@ -1,6 +1,9 @@
 // @OctoLinkerResolve(https://api.dart.dev/stable/dart-async/dart-async-library.html)
 import 'dart:async';
 
+// @OctoLinkerDoesNotResolve
+import 'dart:_internal';
+
 // @OctoLinkerResolve(https://pub.dev/packages/source_maps)
 import 'package:source_maps/source_maps.dart';
 
