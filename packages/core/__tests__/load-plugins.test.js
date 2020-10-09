@@ -38,7 +38,7 @@ describe('load-plugins', () => {
           }
 
           it(`Found ${className} for ${lang}`, () => {
-            assert.equal(!!document.querySelector(`.${className}`), true);
+            assert.strictEqual(!!document.querySelector(`.${className}`), true);
           });
         });
       }

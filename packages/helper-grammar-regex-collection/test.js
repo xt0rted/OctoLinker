@@ -666,7 +666,7 @@ describe('helper-grammar-regex-collection', () => {
               }
             });
 
-            assert.deepEqual(result, expected);
+            assert.deepStrictEqual(result, expected);
           });
         });
       });
@@ -675,7 +675,7 @@ describe('helper-grammar-regex-collection', () => {
         fixturesIterator(invalid, (text) => {
           it(text, () => {
             regexes(text).forEach((regex) => {
-              assert.equal(regex.exec(text), null);
+              assert.strictEqual(regex.exec(text), null);
             });
           });
         });

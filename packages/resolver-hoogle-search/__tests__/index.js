@@ -15,7 +15,7 @@ describe('hoogle-search', () => {
   });
 
   it('returns a function', () => {
-    assert.deepEqual(typeof hoogleSearch({ target }), 'function');
+    assert.deepStrictEqual(typeof hoogleSearch({ target }), 'function');
   });
 
   it('calls the hoogle search api', () => {

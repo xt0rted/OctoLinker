@@ -5,7 +5,7 @@ describe('relative-file', () => {
   const path = '/octo/file.txt';
 
   it('resolves local file', () => {
-    assert.deepEqual(
+    assert.deepStrictEqual(
       relativeFile({ path, target: '/foo.txt' }),
       '{BASE_URL}/octo/foo.txt',
     );

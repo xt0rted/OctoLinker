@@ -78,7 +78,7 @@ describe('byline', () => {
   });
 
   it('does not collect values if closing pattern is missing', () => {
-    assert.deepEqual(
+    assert.deepStrictEqual(
       [],
       bylineParser(fixture, {
         openingPattern,
@@ -89,7 +89,7 @@ describe('byline', () => {
   });
 
   it('does not collect values if closing line is missing', () => {
-    assert.deepEqual(
+    assert.deepStrictEqual(
       expectedCorrupt,
       bylineParser(fixtureCorrupt, {
         openingPattern,
@@ -100,7 +100,7 @@ describe('byline', () => {
   });
 
   it('collects values between opening and close pattern', () => {
-    assert.deepEqual(
+    assert.deepStrictEqual(
       expected,
       bylineParser(fixture, {
         openingPattern,
@@ -111,7 +111,7 @@ describe('byline', () => {
   });
 
   it('collects match values', () => {
-    assert.deepEqual(
+    assert.deepStrictEqual(
       expectedAllValues,
       bylineParser(fixture, {
         matchPattern: /(val[0-9])/,

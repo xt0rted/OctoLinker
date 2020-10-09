@@ -6,7 +6,7 @@ describe('Less', () => {
   const target = 'foo.less';
 
   it('resolves links', () => {
-    assert.deepEqual(Less.resolve(path, [target]), [
+    assert.deepStrictEqual(Less.resolve(path, [target]), [
       '{BASE_URL}/octo/foo.less',
       {
         path: '/octo/dog.less',
