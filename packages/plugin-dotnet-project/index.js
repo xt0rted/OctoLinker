@@ -13,7 +13,7 @@ export default {
 
   getPattern() {
     return {
-      pathRegexes: [/\.(cs|fs|msbuild|vb)proj$/],
+      pathRegexes: [/\.(cs|fs|msbuild|py|vb)proj$/],
       githubClasses: [],
     };
   },

@@ -16,7 +16,7 @@ export default {
     return {
       pathRegexes: [
         /packages\.config$/,
-        /\.(cs|fs|msbuild|vb)proj$/,
+        /\.(cs|fs|msbuild|py|vb)proj$/,
         /\.props$/,
         /\.targets$/,
       ],
